@@ -3,11 +3,13 @@ package com.imooc.item.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import com.imooc.item.pojo.Items;
 import com.imooc.item.pojo.ItemsExample;
 
 
+@Repository
 public interface ItemsMapper {
     int countByExample(ItemsExample example);
 
