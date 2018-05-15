@@ -287,5 +287,9 @@
 	<modules>
 		<module>imooc-dubbo-item-api</module>
 		<module>imooc-dubbo-item-service</module>
+		<module>imooc-dubbo-order-api</module>
+		<module>imooc-dubbo-order-service</module>
+		<module>imooc-dubbo-web</module>
+		<module>imooc-dubbo-common</module>
 	</modules>
 </project>
