@@ -27,6 +27,8 @@ public class ItemsServiceImpl implements ItemsService {
 	@Override
 	public void displayReduceCounts(String itemId, int buyCounts) {
 		
+//		int a  = 1 / 0;
+		
 		Items reduceItem = new Items();
 		reduceItem.setId(itemId);
 		reduceItem.setBuyCounts(buyCounts);

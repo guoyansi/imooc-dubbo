@@ -24,6 +24,8 @@ public class PayController {
 		return "index";
 	}
 	
+	
+	//TODO 执行异常，待解决  郭延思
 	@GetMapping("/buy")
 	@ResponseBody
 	public IMoocJSONResult doGetlogin(String itemId) {

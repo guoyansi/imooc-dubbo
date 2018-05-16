@@ -31,11 +31,11 @@
 			<artifactId>spring-aspects</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.imooc</groupId>
 			<artifactId>imooc-single-mvc-pojo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- 引入dubbo -->
 		<dependency>
@@ -103,6 +103,26 @@
 
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.ini</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+	
 		<!-- 配置tomcat插件: 运行war工程必须在它的聚合工程内配置tomcat maven build命令: clean tomcat7:run 
 			*如果不写tomcat7, 那么默认使用tomcat6运行 tomcat7 maven 插件支持tomcat8&jdk1.8 -->
 		<plugins>
