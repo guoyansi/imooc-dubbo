@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.imooc.common.utils.IMoocJSONResult;
+import com.imooc.curator.utils.ZKCurator;
+import com.imooc.item.service.ItemsService;
+import com.imooc.order.service.OrdersService;
 import com.imooc.web.service.CulsterService;
 
 /**
@@ -17,7 +20,16 @@ import com.imooc.web.service.CulsterService;
 public class PayController {
 	
 	@Autowired
+	private ItemsService itemsService;
+	
+	@Autowired
+	private OrdersService ordersService;
+	
+	@Autowired
 	private CulsterService buyService;
+	
+	@Autowired
+	private ZKCurator zkCurator;
 	
 	@RequestMapping("/index")
 	public String index() {
@@ -25,7 +37,6 @@ public class PayController {
 	}
 	
 	
-	//TODO 执行异常，待解决  郭延思
 	@GetMapping("/buy")
 	@ResponseBody
 	public IMoocJSONResult doGetlogin(String itemId) {
@@ -37,6 +48,42 @@ public class PayController {
 		}
 		
 		return IMoocJSONResult.ok();
+	}
+	@GetMapping("/displayBuy")
+	@ResponseBody
+	public IMoocJSONResult displayBuy(String itemId) {
+		
+		if (StringUtils.isNotBlank(itemId)) {
+			buyService.displayBuy(itemId);
+		} else {
+			return IMoocJSONResult.errorMsg("商品id不能为空");
+		}
+		
+		return IMoocJSONResult.ok();
+	}
+	
+	@GetMapping("/displayBuy2")
+	@ResponseBody
+	public IMoocJSONResult displayBuy2(String itemId) {
+		
+		if (StringUtils.isNotBlank(itemId)) {
+			buyService.displayBuy(itemId);
+		} else {
+			return IMoocJSONResult.errorMsg("商品id不能为空");
+		}
+		
+		return IMoocJSONResult.ok();
+	}
+	
+	/**
+	 * @Description: 判断zk是否连接
+	 */
+	@RequestMapping("/isZKAlive")
+	@ResponseBody
+	public IMoocJSONResult isZKAlive() {
+		boolean isAlive = zkCurator.isZKAlive();
+		String result = isAlive ? "连接" : "断开";
+		return IMoocJSONResult.ok(result);
 	}
 	
 }
